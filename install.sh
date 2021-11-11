@@ -8,7 +8,10 @@ fi
 cp ./add-todo.sh $HOME/.local/bin/add-todo
 cp ./end-todo.sh $HOME/.local/bin/end-todo
 cp ./list-todo.sh $HOME/.local/bin/list-todo
+
 shell=$(echo $SHELL | cut -d '/' -f 3)
+echo "echo '<todo>'" >> $HOME/.${shell}rc
+echo 'cat '$HOME'/todo/todo.txt' >> $HOME/.${shell}rc
 if [ $(echo $PATH | grep "$HOME/.local/bin" | wc -l) -ne 1 ]; then
   echo 'export PATH=$PATH:$HOME/.local/bin' >> $HOME/.${shell}rc
 fi
